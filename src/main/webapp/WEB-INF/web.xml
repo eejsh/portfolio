@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>port</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+    
+  <!-- 관리자 중복 체크  -->
+     <servlet>
+  <servlet-name>loginck</servlet-name>
+  <servlet-class>controller.LoginCheckController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>loginck</servlet-name>
+  <url-pattern>/admin/LoginCheckController.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!--관리자 등록  -->
+    <servlet>
+  <servlet-name>logininsert</servlet-name>
+  <servlet-class>controller.AdminController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>logininsert</servlet-name>
+  <url-pattern>/admin/AdminController.do</url-pattern>
+  </servlet-mapping>
+
+
+
+  <!-- 관리자 로그인 ok -->
+       <servlet>
+  <servlet-name>loginok</servlet-name>
+  <servlet-class>controller.AdminLoginController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>loginok</servlet-name>
+  <url-pattern>/admin/AdminLoginController.do</url-pattern>
+  </servlet-mapping>
+  
+  
+ <!-- main view -->  
+   <servlet>
+  <servlet-name>view</servlet-name>
+  <servlet-class>controller.MainController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>view</servlet-name>
+  <url-pattern>/admin/main</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 회원 승인 -->
+     <servlet>
+  <servlet-name>adminupdate</servlet-name>
+  <servlet-class>controller.AdminOKController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>adminupdate</servlet-name>
+  <url-pattern>/admin/mappupdate.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <!-- 회원정보 업데이트 -->
+<servlet>
+<servlet-name>adup</servlet-name>
+<servlet-class>controller.AdminUpdateController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>adup</servlet-name>
+<url-pattern>/admin/admin_update.do</url-pattern>
+</servlet-mapping>
+  
+  
+  <!-- 사이트 정보  -->
+   <servlet>
+  <servlet-name>admin_site_insert</servlet-name>
+  <servlet-class>controller.SiteInfoController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>admin_site_insert</servlet-name>
+  <url-pattern>/admin/siteinfoinsert.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 사이트 정보 출력  -->
+     <servlet>
+  <servlet-name>ad_siteinfoview</servlet-name>
+  <servlet-class>controller.SiteInfoViewController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>ad_siteinfoview</servlet-name>
+  <url-pattern>/admin/siteinfo</url-pattern>
+  </servlet-mapping>
+  
+
+
+<!-- 공지 등록  -->
+     <servlet>
+  <servlet-name>notice_in</servlet-name>
+  <servlet-class>controller.NoticeController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>notice_in</servlet-name>
+  <url-pattern>/admin/noticein.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+ <!-- 공지 뷰 --> 
+     <servlet>
+  <servlet-name>noti_view</servlet-name>
+  <servlet-class>controller.NoticeViewController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>noti_view</servlet-name>
+  <url-pattern>/admin/notice</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 공지 수정 -->
+  <servlet>
+  <servlet-name>noti_up</servlet-name>
+  <servlet-class>controller.NoticeUpdateController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>noti_up</servlet-name>
+  <url-pattern>/admin/notiupdate.do</url-pattern>
+  </servlet-mapping>
+  
+    <!-- 공지 삭제  -->
+  <servlet>
+  <servlet-name>noti_del</servlet-name>
+  <servlet-class>controller.NoticeDelController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>noti_del</servlet-name>
+  <url-pattern>/admin/noti_del.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- cate insert -->
+     <servlet>
+  <servlet-name>list_category</servlet-name>
+  <servlet-class>controller.CategoryController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>list_category</servlet-name>
+  <url-pattern>/admin/list_category.do</url-pattern>
+  </servlet-mapping>
+  
+    <!-- cate delete -->
+     <servlet>
+  <servlet-name>list_catedel</servlet-name>
+  <servlet-class>controller.CateDelController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>list_catedel</servlet-name>
+  <url-pattern>/admin/list_catedel.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- cateview -->
+       <servlet>
+  <servlet-name>list_category_view</servlet-name>
+  <servlet-class>controller.CategoryViewController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>list_category_view</servlet-name>
+  <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet> <!--상품코드 중복확인  -->
+  <servlet-name>pronumck</servlet-name>
+  <servlet-class>controller.ProductCkController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>pronumck</servlet-name>
+  <url-pattern>/admin/pro_ck.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- product 상품 등록  -->
+ 
+ <servlet>
+   <servlet-name>prowrite</servlet-name>
+  <servlet-class>controller.ProductController</servlet-class>
+ </servlet>
+	
+  <servlet-mapping>
+  <servlet-name>prowrite</servlet-name>
+  <url-pattern>/admin/pro_write.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+    <!-- product 상품 삭제  -->
+   <servlet>
+   <servlet-name>pro_del</servlet-name>
+  <servlet-class>controller.ProductDelController</servlet-class>
+ </servlet>
+	
+  <servlet-mapping>
+  <servlet-name>pro_del</servlet-name>
+  <url-pattern>/admin/productdel.do</url-pattern>
+  </servlet-mapping>
+ 
+   
+<!-- 상품리스트  -->
+   <servlet>
+   <servlet-name>proview</servlet-name>
+  <servlet-class>controller.ProductViewController</servlet-class>
+ </servlet>
+	
+  <servlet-mapping>
+  <servlet-name>proview</servlet-name>
+  <url-pattern>/admin/product</url-pattern>
+  </servlet-mapping>
+
+ <!-- 쿠폰등록--> 
+ <servlet>
+  <servlet-name>coupon</servlet-name>
+  <servlet-class>controller.CouponController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>coupon</servlet-name>
+  <url-pattern>/admin/coupon.do</url-pattern>
+  </servlet-mapping>
+  
+
+<!-- shopping view part -->
+    <servlet>
+  <servlet-name>shopping_view</servlet-name>
+  <servlet-class>controller.ShoppingViewController</servlet-class>
+  </servlet>
+ 
+  <servlet-mapping>
+  <servlet-name>shopping_view</servlet-name>
+  <url-pattern>/admin/shopping</url-pattern>
+  </servlet-mapping>
+
+
+<!--error page -->
+<error-page>
+<error-code>404</error-code>
+<location>/error.jsp</location>
+</error-page>
+
+<error-page>
+<error-code>500</error-code>
+<location>/error.jsp</location>
+</error-page>
+  
+
+  
+</web-app>

@@ -1,0 +1,91 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<p>쇼핑몰 관리 페이지</p>
+<form name="f" id="f">
+<div class="subpage_view" style="margin-top: 25px;">
+    <span style="height: 35px; border-bottom:1px solid #ccc;">※ 신규 쿠폰등록 </span>
+    <span>
+     <ol class="coupon_in">
+        <li>쿠폰명</li>
+        <li><input type="text" class="inputs coupon_intext4" maxlength="40" name="cname"> ※ 쿠폰명은 최대 40자까지 입력이 가능합니다.</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>쿠폰종류</li>
+        <li><input type="text" class="inputs coupon_intext1" maxlength="40" name="ckind"> ※ 쿠폰종류를 입력해 주세요 (상품할인, 배송비할인)</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>사용 시작일</li>
+        <li><input type="text" id="date1" class="inputs coupon_intext1" maxlength="10" name="csttime"> ※ 클릭시 해당 시작을 캘린더에서 선택 하세요</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>사용 종료일</li>
+        <li><input type="text" id="date2" class="inputs coupon_intext1" maxlength="10" name="clstime" > ※ 종료 일자 이후에는 쿠폰은 더 이상 사용되지 않습니다.</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>쿠폰타입</li>
+        <li>
+            <select class="inputs coupon_intext2" name="ctype">
+                <option value="0">쿠폰 타입 선택</option>
+                <option value="1">정액할인</option>
+                <option value="2">정률할인</option>
+            </select>
+             ※ 정액할인 일 경우 할인 금액을 입력해야 하며, 정률 할인 일 경우 할인율 % 값을 입력하세요</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>할인금액 및 할인율</li>
+        <li><input type="text" class="inputs coupon_intext1" name="crate"> ※ 정률할인 일 경우 숫자 100 이상 입력이 안됩니다.</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>최소 주문금액</li>
+        <li><input type="text" class="inputs coupon_intext1" name="cmin" value="10000";> ※ 해당 쿠폰은 최소 주문금액이 되어야만 사용이 가능합니다. (최소 10000 이상 부터 입력이 가능합니다.)</li>
+     </ol>
+     <ol class="coupon_in">
+        <li>쿠폰이미지 등록</li>
+        <li><input type="file" name="cimg"> ※ 쿠폰이미지는 최소 2MB 이하 이미지만 사용가능 합니다.</li>
+     </ol>
+
+    </span>
+</form>
+
+    <span><input type="button" value="쿠폰 리스트" class="shopping_btn2" title="쿠폰 리스트" onclick="couponlist()">
+     		<input type="button" value="등록 완료" class="shopping_btn" title="등록 완료" onclick="couponadd()" ></span>
+</div>
+
+
+<script>
+function couponlist() {
+	location.href ="./shopping?pgno=1";
+}
+//  ※ 정액할인 일 경우 할인 금액을 입력해야 하며, 정률 할인 일 경우 할인율 % 값을 입력하세요</li>
+// 1정액할인 - 금액, 2 정률 -%
+function couponadd() {
+
+	if(f.cname.value==""){
+		alert("쿠폰 이름을 등록하세요.");
+	}else if(f.ckind.value==""){
+	alert("쿠폰 종류를 입력하세요.");
+	}else if(f.csttime.value==""){
+		alert("쿠폰 사용 시작일을 선택 하세요.");
+	}else if(f.clstime.value==""){
+		alert("쿠폰 사용 종료일을 선택 하세요.");
+	}else if(f.ctype.value=="0"){
+		alert("쿠폰 타입을 선택하세요.");
+	}else if(f.ctype.value=="1" && f.crate.value.length < 4 ){
+			alert("정액할인 쿠폰 선택 시 금액을 입력하세요. (1000원 이상) ");
+	}
+	else if(f.ctype.value=="2" && f.crate.value.length > 2){
+			alert("정률할인 쿠폰 선택 시 할인 %로 입력하세요. (100% 이상 입력금지)");
+	}else if(f.cmin.value==""){
+	alert("쿠폰 사용 최소 금액을 등록해 주세요. ");
+	}else if(f.cmin.value.length <5){
+		alert("최소 10000원 이상 부터 입력 가능합니다. ")
+	}
+	else{		
+	f.method ="POST";
+	f.action ="coupon.do";
+	f.enctype="multipart/form-data";
+	f.submit();
+	
+	}	
+}
+</script>

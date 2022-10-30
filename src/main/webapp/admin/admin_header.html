@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<meta charset="UTF-8">
+<div class="header_div">
+    <p><img src="./img/logo.png" class="logo_sm"  onclick="abc();"> ADMINISTRATOR</p>
+    <p><%=name%>, <%=id%><a href="./admin_info.jsp">[개인정보 수정]</a> <a href="./logout.jsp">[로그아웃]</a></p>
+</div>
+
+<script>
+
+function abc() {
+	location.href="./main";
+}
+</script>

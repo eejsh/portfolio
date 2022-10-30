@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page errorPage="./error.jsp" %>
+
+
+<script>
+function prefer() {
+	location.href ='./siteinfo';
+}
+
+function noti() {
+	location.href="./notice?pgno=1";
+}
+
+function prolist() {
+	location.href="./product?pgno=1";
+}
+
+
+function coupon() {
+	location.href="./shopping";
+}
+
+function aa() {
+	alert("준비중");
+}
+
+function order() {
+	alert("준비중");
+}
+function bb(){
+	alert("준비중");
+}
+</script>
+
+
+<meta charset="UTF-8">
+<div class="nav_div">
+    <ol>
+        <li title="쇼핑몰 기본설정" onclick="prefer();">쇼핑몰 기본설정</li>
+        <li title="회원관리" onclick="bb();">회원관리</li>
+        <li title="공지사항" onclick="noti();">공지사항</li>
+        <li title="쇼핑몰관리" onclick="coupon();">쇼핑몰관리</li>
+        <li title="상품리스트" onclick="prolist();">상품리스트</li>
+        <li title="주문내역" onclick="order();">주문내역</li>
+        <li title="매출내역" onclick="aa();">매출내역</li>
+    </ol>
+</div>

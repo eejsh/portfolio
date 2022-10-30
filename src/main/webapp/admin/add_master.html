@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 등록 페이지</title>
+    <script src="./js/jquery.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="./css/basic.css">
+    <link rel="stylesheet" type="text/css" href="./css/login.css?v=1">
+    <link rel="icon" href="./img/logo.png" sizes="128x128">
+    <link rel="icon" href="./img/logo.png" sizes="64x64">
+    <link rel="icon" href="./img/logo.png" sizes="32x32">
+    <link rel="icon" href="./img/logo.png" sizes="16x16">
+    <script>
+   let iddck;
+   
+function register(ok) {
+	if(ok==2){
+		alert("등록이 취소됩니다.");
+		//location.href='history.go(-1)';
+		location.href='index.html';	
+	}else{
+		if(f.mid.value==""){
+	alert("아이디를 입력하세요.");
+		}
+	else if(f.mpass.value==""){
+			alert("비밀번호를 입력하세요.");
+			}
+			else if(f.mpass.value.length < 4){
+			alert("비밀번호는 4자리 이상 16자리 이하 입니다. ");	
+		}else if(f.mpass.value!=f.mpassck.value){
+			alert("동일한 비밀번호를 입력하세요.");
+		}else if(f.mname.value==""){
+			alert("이름을 입력하세요.");
+		}else if(f.memail.value==""){
+			alert("이메일주소를 입력하세요.")
+		}
+			else if(f.memail.value.indexOf('@')==-1){
+				alert("정확한 이메일 주소를 입력하세요. ");
+			
+		}else if(f.mtel2.value=="" || f.mtel3.value==""){
+			alert("전화번호를 입력하세요.");
+			}
+		else if(isNaN(f.mtel2.value)==true || isNaN(f.mtel3.value)==true){
+				alert("숫자만 입력하세요.");
+		}else if(f.mdepart.value=="0"){
+			alert("소속된 부서를 선택하세요");
+		}else if(f.mpo.value=="0"){
+			alert("직책을 선택하세요.");
+		}
+		else{
+			if(iddck!="ok"){
+			alert("아이디 중복 체크 해주세요. ");
+			}else{
+			f.method="POST";		
+			f.action="AdminController.do";
+			f.enctype="application/x-www-form-urlencoded";
+			f.submit();			
+				
+			}
+			
+		}
+	}
+}    
+
+function idoverck(){
+	var ckmid = document.getElementById("mid").value;
+  if(ckmid.length <4){
+	  alert("아이디는 최소 4자 이상입니다.");
+  }  else if(f.mid.value=="admin" || f.mid.value=="ADMIN" || f.mid.value=="master" || f.mid.value=="MASTER"){
+			alert("해당 아이디는 사용 하실 수 없습니다. ");
+  }else{
+	idck(ckmid);
+  }
+	
+};
+
+function idck(ckmid){
+	let ick;
+	function wck(){
+		if(window.XMLHttpRequest){
+			return new XMLHttpRequest();
+		}
+	}
+	function iget(){
+		if(ick.readyState==XMLHttpRequest.DONE && ick.status==200){
+		
+			if(this.response=="ok"){
+				console.log(this.response);
+				alert("사용 가능한 아이디 입니다.");
+				document.getElementById("mid").readOnly = true;  
+			 iddck = this.response;
+			 	
+			}else{
+		 	   alert(" 해당 아이디는 중복된 아이디 입니다.");
+		 	   document.getElementById("mid").value="";
+			}
+		}else if(ick.status==404){
+			console.log(ick);
+			console.log("통신오류");
+		}
+	}
+	ick = wck();
+	ick.onreadystatechange = iget;
+	ick.open("POST", "LoginCheckController.do?ckmid=" +ckmid,true);
+	ick.send();
+	}
+
+
+
+    </script>
+</head>
+<body>
+
+    <header class="admin_title_add">
+        <p><img src="./img/logo.png" class="logo_sm"> ADMINISTRATOR ADD</p>
+    </header>
+
+
+<form name="f">
+<input type="hidden" name="mapp" value="N">
+    <section class="admin_bgcolor_add">
+        <div class="admin_login_add">
+            <ul>
+                <li class="font_color1">아이디 및 패스워드 정보</li>
+                <li>
+                <input type="text" class="add_input1" placeholder="생성할 관리자 아이디를 입력하세요" id="mid" name="mid">
+                <button type="button"  class="btn_button" onclick="idoverck()">중복체크</button>
+                </li>
+                <li>
+                    <input type="password" class="add_input1" pattern=".{4,16}"  placeholder="접속할 패스워드를 입력하세요" name="mpass">
+                    <input type="password" class="add_input1" placeholder="동일한 패스워드를 입력하세요" name="mpassck">
+                </li>
+                <li class="font_color1">관리자 기본정보 입력</li>
+                <li>
+                    <input type="text" class="add_input1" placeholder="담당자 이름을 입력하세요" name="mname">
+                </li>
+                <li>
+                <input type="text" class="add_input1 emails" placeholder="담당자 이메일을 입력하세요" name="memail">
+                </li>
+                <li class="font_color1">
+                <input type="text" class="add_input1 hp1" placeholder="HP" value="010" maxlength="3" name="mtel1">
+                -
+                <input type="text" class="add_input1 hp2" placeholder="1234" maxlength="4" name="mtel2">
+                -
+                <input type="text" class="add_input1 hp2" placeholder="5678" maxlength="4" name="mtel3">
+                </li>
+                <li class="font_color1">관리자 담당부서 및 직책</li>
+                <li>
+                    <select class="add_select1" name="mdepart">
+                        <option value="0">담당자 부서를 선택하세요</option>
+                        <option value="1">임원</option>
+                        <option value="2">전산팀</option>
+                        <option value="3">디자인팀</option>
+                        <option value="4">CS팀</option>
+                        <option value="5">MD팀</option>
+                    </select>
+                    <select class="add_select1" name="mpo">
+                        <option value="0">담당자 직책을 선택하세요</option>
+                        <option value="1">대표</option>
+                        <option value="2">부장</option>
+                        <option value="3">팀장</option>
+                        <option value="4">과장</option>
+                        <option value="5">대리</option>
+                        <option value="6">사원</option>
+                    </select>
+                </li>
+                <li class="font_color1">※ 가입완료 후 전산 담당자가 확인 후 로그인 할 수 있습니다.</li>
+            </ul>
+            <span class="admin_addbtn">
+                <button type="button" class="btn_button btncolor1" title="관리자 등록" onclick="register(1)">관리자 등록</button>
+                <button type="button" class="btn_button btncolor2" title="관리자 취소" onclick="register(2)">등록 취소</button>
+            </span>
+        </div>
+    </section>
+</form>
+
+
+    <footer class="admin_copy">
+        <div>
+            Copyright ⓒ 2022 webshopping All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

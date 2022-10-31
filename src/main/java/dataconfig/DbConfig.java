@@ -10,7 +10,7 @@ public class DbConfig {
 	public static Connection cafe24() throws ClassNotFoundException, SQLException{
 		
 	    String dbDriver = "com.mysql.jdbc.Driver";
-	    String dburl="jdbc:mysql://localhost:3306/eejsh08";
+	    String dburl="jdbc:mysql://localhost:3306/id";
 	    String dbuser = "";
 	    String dbpw ="";
 		

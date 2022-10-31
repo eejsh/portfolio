@@ -91,6 +91,7 @@ public class ProductController extends HttpServlet {
 			pimg2 = imgurl;
 			break;
 		case "pimg3" :
+			pimg3 = imgurl;
 			break;
 		}	
 	

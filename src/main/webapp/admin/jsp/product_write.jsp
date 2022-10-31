@@ -148,71 +148,6 @@ function prolist() {
 	location.href ="./product?pgno=1";
 }
 
-
-//상품등록
-//상품 등록은 셀렉트로 넣어주세요. 
-//대메뉴는 무조건 검토
-// function product_ck(){
-// 	if(fw.pcode.value==""){
-// 		alert("대메뉴 코드를 입력하세요.");
-// 	}else if(fw.pcode.value==""){
-// 		alert("상품코드를 입력하세요.");
-// 	}else if(fw.pname.value==""){
-// 		alert("상품명을 입력하세요.");
-// 	}else if(fw.ptext.value==""){
-// 		alert("상품 부가설명을 입력하세요.");
-// 	}else if(fw.pprice.value==""){
-// 		alert("판매가격을 입력하세요.");
-// 	}else{
-// 		if(isNaN(fw.pprice.value)==true){    //가격 숫자만 입력가능하게 설정함.
-// 			alert("판매가격은 숫자만 입력하세요. ");
-// 		}else if(Number(fw.pprice.value) <= 1000){  //1000원 미만일 경우 
-// 			 alert("판매가격은 최소 1000원 이상 등록하셔야 합니다.  ");
-// 		}
-// 	}
-// }
-
-
-//ajax 로 상품코드 보내서 중복확인 하기  pcode
-
-// function product_ajax() {
-	
-// 	var code = fw.pcode.value;
-
-// 	if(code==""){
-// 		alert("상품코드를 입력하셔야 합니다.");
-// 	}else{
-		
-// 	var http;
-// 	if(window.XMLHttpRequest){
-// 		http=new XMLHttpRequest();
-// 	}
-// 	http.onreadystatechange = function() {
-// 		if(http.status == 200){
-// 			//console.log("통신성공");
-// var result = http.response;
-// if()result=="no"{
-// alert("상품코드가 중복됩니다.");	
-// fw.pcode.value=="";  //상품코드 중복 시 초기화 시켜줌
-// }else{
-// 	fw.pcode.style.readOnly = true;
-// }
-// 		}
-// 	}
-// 	http.open("GET", "ajax.do?code="+code, true); //get 파라미터로 보내기.
-// 	http.send();
-// 	}
-// }
-
-
-
-
-//서브밋
-
-
-//판매가격, 할인가격 = 할인가가 없을 시 판매가격이 출력되어야함. 
-
-
 //중복체크 
 function prock(){
 var ckpro = document.getElementById("pcode").value;
@@ -270,11 +205,6 @@ function proup(z) {
 	if(fw.pprice.value==""){
 		alert("할인율 적용 시 판매가격 1000원 이상 입력하세요.");
 	}else{
-// 		var money = Number(fw.pprice.value);
-// 		var sale = Number(z);
-// 		var total ="";
-// 		total = money - (money * (sale/100));
-// 		fw.pdisprice.value = total;
 	var pprice = document.getElementById("pprice").value;
 	var pdisrate = document.getElementById("pdisrate").value;
 	var t = pprice-((pdisrate / 100) * pprice);
@@ -358,10 +288,5 @@ function proinser(){
   } 
  }
 }
-// if(fw.pdisrate.value=="0" || fw.pdisrate.value==""){
-// 	fw.pdisprice.value=="0";  //할인율이 없으면 할인금액은 0으로 넣어줘야함. 
-// 	}			
-	
-
 
 </script>
